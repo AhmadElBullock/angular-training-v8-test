@@ -1,0 +1,22 @@
+/* li {
+    float: left;
+    list-style-type: none;
+    padding: 0.25rem 0.5rem;
+    margin-right: 7px;
+    border: 1px solid #28a745;
+    border-radius: 5px;
+    color: #28a745;
+    background-color: transparent;
+} */
+
+p {margin: 0;}
+.small {
+    float: left;
+    color: #6a737c;
+}
+span {margin-right: 5px;}
+
+input.form-control {
+    width: 300px;
+    margin-bottom: 5px;
+}
