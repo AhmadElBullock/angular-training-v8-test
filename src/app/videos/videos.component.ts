@@ -18,8 +18,11 @@ videos: Video[];
   }
 
   onViewsSort() {
-    //this.videosService.ngOnInit()
     this.videosService.viewsSort()
+  }
+
+  onlikesSort() {
+    this.videosService.likesSort()
   }
 
   test() {
