@@ -8,22 +8,35 @@ import { Video } from './video.interface';
 export class VideosService implements OnInit {
   
   videos: Video[] = VIDEOS;
-  videosByViews: Video[] = [];
+  videosByViews: boolean = true;
 
   constructor() {}
   ngOnInit() {  }
 
   viewsSort() {
-    let videosByViews = this.videos.sort((v1,v2) => {
-      if (v1.views > v2.views) {
-          return 1;
-      }
-      if (v1.views < v2.views) {
-          return -1;
-      }
-      return 0;
-  });
-  console.log(videosByViews)
+    if(this.videosByViews) {
+      this.videos.sort((v1,v2) => {
+        if (v1.views > v2.views) {
+            return 1;
+        }
+        if (v1.views < v2.views) {
+            return -1;
+        }
+        return 0;
+      });
+      
+    } else {
+      this.videos.sort((v1,v2) => {
+        if (v1.views > v2.views) {
+            return -1;
+        }
+        if (v1.views < v2.views) {
+            return 1;
+        }
+        return 0;
+      });
+    }
+    this.videosByViews = !this.videosByViews
   }
 
  
