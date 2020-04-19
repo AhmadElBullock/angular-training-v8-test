@@ -13,7 +13,7 @@ export class VideosService implements OnInit {
   constructor() {}
   ngOnInit() {  }
 
-  onSorting() {
+  viewsSort() {
     let videosByViews = this.videos.sort((v1,v2) => {
       if (v1.views > v2.views) {
           return 1;

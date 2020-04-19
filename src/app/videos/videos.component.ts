@@ -17,9 +17,9 @@ videos: Video[];
     this.videos = this.videosService.videos;
   }
 
-  onVideosServiceSort() {
+  onViewsSort() {
     //this.videosService.ngOnInit()
-    this.videosService.onSorting()
+    this.videosService.viewsSort()
   }
 
   test() {
