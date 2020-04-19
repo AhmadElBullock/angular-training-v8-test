@@ -10,6 +10,7 @@ export class VideosService implements OnInit {
   videos: Video[] = VIDEOS;
   videosByViewsToglle: boolean = true;
   videosBylikesToglle: boolean = true;
+  videosBySharesToglle: boolean = true;
 
   constructor() {}
   ngOnInit() {  }
@@ -67,11 +68,29 @@ export class VideosService implements OnInit {
   }
 
  
-
-
-
-
-
-
-
+  sharesSort() {
+    if(this.videosBySharesToglle) {
+      this.videos.sort((v1,v2) => {
+        if (v1.shares > v2.shares) {
+            return -1;
+        }
+        if (v1.shares < v2.shares) {
+            return 1;
+        }
+        return 0;
+      });
+      
+    } else {
+      this.videos.sort((v1,v2) => {
+        if (v1.shares > v2.shares) {
+            return 1;
+        }
+        if (v1.shares < v2.shares) {
+            return -1;
+        }
+        return 0;
+      });
+    }
+    this.videosBySharesToglle = !this.videosBySharesToglle
+  }
 }

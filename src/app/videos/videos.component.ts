@@ -21,7 +21,11 @@ videos: Video[];
     this.videosService.viewsSort()
   }
 
-  onlikesSort() {
+  onLikesSort() {
+    this.videosService.likesSort()
+  }
+
+  onSharesSort() {
     this.videosService.likesSort()
   }
 

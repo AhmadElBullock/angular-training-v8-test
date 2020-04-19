@@ -1,6 +1,7 @@
 <input type="text" class="form-control" placeholder="Search" [(ngModel)]="videoFilter">
 <button class="btn btn-outline-warning" (click)="onViewsSort()">ViewsSort</button>
-<button class="btn btn-outline-primary" (click)="onViewsSort()">LikesSort</button>
+<button class="btn btn-outline-primary" (click)="onLikesSort()">LikesSort</button>
+<button class="btn btn-outline-success" (click)="onSharesSort()">SharesSort</button>
 <button (click)="test()">test</button>
 
 <div class="col-12 mb-3" *ngFor="let video of videos | filter: videoFilter: 'parent_name'">
