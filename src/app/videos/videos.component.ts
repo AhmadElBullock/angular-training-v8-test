@@ -9,7 +9,12 @@ import { VideosService } from '../videos.service';
   styleUrls: ['./videos.component.css']
 })
 export class VideosComponent implements OnInit {
-videos: Video[];
+  videos: Video[];
+  viewsStatus: boolean = true;
+  likesStatus: boolean = true;
+  sharesStatus: boolean = true;
+
+
    
   constructor(private videosService: VideosService) { }
 
@@ -18,15 +23,18 @@ videos: Video[];
   }
 
   onViewsSort() {
-    this.videosService.viewsSort()
+    this.videosService.viewsSort();
+    this.viewsStatus = !this.viewsStatus
   }
 
   onLikesSort() {
-    this.videosService.likesSort()
+    this.videosService.likesSort();
+    this.likesStatus = !this.likesStatus
   }
 
   onSharesSort() {
-    this.videosService.likesSort()
+    this.videosService.likesSort();
+    this.sharesStatus = !this.sharesStatus
   }
 
   test() {
