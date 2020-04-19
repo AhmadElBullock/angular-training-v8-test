@@ -6,6 +6,5 @@ export interface Video {
         likes: number,
         comments: number,
         shares: number,
-        published: any
-
+        published: string
 }
