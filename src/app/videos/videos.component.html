@@ -1,4 +1,6 @@
 <input type="text" class="form-control" placeholder="Search" [(ngModel)]="videoFilter">
+<button (click)="onVideosServiceSort()">videosServiceSort</button>
+<button (click)="test()">test</button>
 
 <div class="col-12 mb-3" *ngFor="let video of videos | filter: videoFilter: 'parent_name'">
     <div class="media">

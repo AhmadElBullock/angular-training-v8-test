@@ -1,5 +1,4 @@
 export interface Video {
-
         title: string,
         parent_name: string,
         views: number,
