@@ -10,9 +10,9 @@ import { VideosService } from '../videos.service';
 })
 export class VideosComponent implements OnInit {
   videos: Video[];
-  viewsStatus: boolean = true; viewsClicked = false;
-  likesStatus: boolean = true; likesClicked = false;
-  sharesStatus: boolean = true; sharesClicked = false;
+  viewsStatus: boolean = false; viewsClicked = false;
+  likesStatus: boolean = false; likesClicked = false;
+  sharesStatus: boolean = false; sharesClicked = false;
 
 
    
@@ -26,24 +26,24 @@ export class VideosComponent implements OnInit {
     this.videosService.viewsSort();
     this.viewsClicked = true;
     this.viewsStatus = !this.viewsStatus;
-    this.likesStatus = true; this.likesClicked = false;
-    this.sharesStatus = true; this.sharesClicked = false;
+    this.likesStatus = false; this.likesClicked = false;
+    this.sharesStatus = false; this.sharesClicked = false;
   }
 
   onLikesSort() {
     this.videosService.likesSort();
     this.likesClicked = true;
     this.likesStatus = !this.likesStatus;
-    this.viewsStatus = true; this.viewsClicked = false;
-    this.sharesStatus = true; this.sharesClicked = false;
+    this.viewsStatus = false; this.viewsClicked = false;
+    this.sharesStatus = false; this.sharesClicked = false;
   }
 
   onSharesSort() {
-    this.videosService.likesSort();
+    this.videosService.sharesSort();
     this.sharesClicked = true;
     this.sharesStatus = !this.sharesStatus;
-    this.viewsStatus = true; this.viewsClicked = false;
-    this.likesStatus = true; this.likesClicked = false;
+    this.viewsStatus = false; this.viewsClicked = false;
+    this.likesStatus = false; this.likesClicked = false;
   }
 
   test() {

@@ -7,19 +7,19 @@
 <!-- TODO: Bug fix: click 2 times on any button and the arrow will reverse in the other buttons -->
 <button class="btn btn-outline-warning"(click)="onViewsSort()">
     ViewsSort <i *ngIf="viewsClicked === false"></i>
-    <i class="fas fa-sort-down"  *ngIf="!viewsStatus && viewsClicked"></i>
-    <i class="fas fa-sort-up" *ngIf="viewsStatus && viewsClicked"></i>
+    <i class="fas fa-sort-down"  *ngIf="viewsStatus && viewsClicked"></i>
+    <i class="fas fa-sort-up" *ngIf="!viewsStatus && viewsClicked"></i>
 </button>
 
 <button class="btn btn-outline-primary" (click)="onLikesSort()">
     LikesSort <i *ngIf="likesClicked === false"></i>
-    <i class="fas fa-sort-down"  *ngIf="!likesStatus && likesClicked"></i>
-    <i class="fas fa-sort-up" *ngIf="likesStatus && likesClicked"></i>
+    <i class="fas fa-sort-down"  *ngIf="likesStatus && likesClicked"></i>
+    <i class="fas fa-sort-up" *ngIf="!likesStatus && likesClicked"></i>
 </button>
 <button class="btn btn-outline-success" (click)="onSharesSort()">
     SharesSort <i *ngIf="sharesClicked === false"></i>
-    <i class="fas fa-sort-down"  *ngIf="!sharesStatus && sharesClicked"></i>
-    <i class="fas fa-sort-up" *ngIf="sharesStatus && sharesClicked"></i>
+    <i class="fas fa-sort-down"  *ngIf="sharesStatus && sharesClicked"></i>
+    <i class="fas fa-sort-up" *ngIf="!sharesStatus && sharesClicked"></i>
 </button>
 <button (click)="test()">test</button>
 

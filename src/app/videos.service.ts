@@ -9,7 +9,7 @@ export class VideosService implements OnInit {
   
   videos: Video[] = VIDEOS;
   videosByViewsToglle: boolean = true;
-  videosBylikesToglle: boolean = true;
+  videosByLikesToglle: boolean = true;
   videosBySharesToglle: boolean = true;
 
   constructor() {}
@@ -38,11 +38,12 @@ export class VideosService implements OnInit {
         return 0;
       });
     }
-    this.videosByViewsToglle = !this.videosByViewsToglle
+    this.videosByViewsToglle = !this.videosByViewsToglle;
+    this.videosByLikesToglle = true; this.videosBySharesToglle = true;
   }
 
   likesSort() {
-    if(this.videosBylikesToglle) {
+    if(this.videosByLikesToglle) {
       this.videos.sort((v1,v2) => {
         if (v1.likes > v2.likes) {
             return -1;
@@ -64,7 +65,8 @@ export class VideosService implements OnInit {
         return 0;
       });
     }
-    this.videosBylikesToglle = !this.videosBylikesToglle
+    this.videosByLikesToglle = !this.videosByLikesToglle;
+    this.videosByViewsToglle = true; this.videosBySharesToglle = true;
   }
 
  
@@ -77,7 +79,7 @@ export class VideosService implements OnInit {
         if (v1.shares < v2.shares) {
             return 1;
         }
-        return 0;
+        return 0
       });
       
     } else {
@@ -88,9 +90,10 @@ export class VideosService implements OnInit {
         if (v1.shares < v2.shares) {
             return -1;
         }
-        return 0;
+        return 0
       });
     }
-    this.videosBySharesToglle = !this.videosBySharesToglle
+    this.videosBySharesToglle = !this.videosBySharesToglle;
+    this.videosByViewsToglle = true; this.videosByLikesToglle = true;
   }
 }
