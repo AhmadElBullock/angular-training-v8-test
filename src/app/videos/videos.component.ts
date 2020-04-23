@@ -13,13 +13,14 @@ export class VideosComponent implements OnInit {
   viewsStatus: boolean = false; viewsClicked = false;
   likesStatus: boolean = false; likesClicked = false;
   sharesStatus: boolean = false; sharesClicked = false;
-
-
+  parents = [];
    
   constructor(private videosService: VideosService) { }
-
+  
   ngOnInit() {
     this.videos = this.videosService.videos;
+    this.videosService.unique();
+    this.parents = this.videosService.uniqueParent;
   }
 
   onViewsSort() {
@@ -47,7 +48,7 @@ export class VideosComponent implements OnInit {
   }
 
   test() {
-    console.log(this.videosService.videos)
+    this.videosService.unique()
   }
 
 }

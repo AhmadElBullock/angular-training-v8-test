@@ -8,12 +8,22 @@ import { Video } from './video.interface';
 export class VideosService implements OnInit {
   
   videos: Video[] = VIDEOS;
+  allParent = [];
+  uniqueParent = [];
   videosByViewsToglle: boolean = true;
   videosByLikesToglle: boolean = true;
   videosBySharesToglle: boolean = true;
 
   constructor() {}
   ngOnInit() {  }
+
+  unique() {
+    for (let video of this.videos) {
+      this.allParent.push(video.parent_name);
+    }
+    this.uniqueParent = [...new Set(this.allParent)];
+    console.log(this.uniqueParent)
+  }
 
   viewsSort() {
     if(this.videosByViewsToglle) {

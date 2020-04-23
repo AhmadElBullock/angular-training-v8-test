@@ -1,10 +1,11 @@
-<input type="text" class="form-control" placeholder="Search" [(ngModel)]="videoFilter">
+  <select [(ngModel)]="videoFilter">
+    <option *ngFor="let parent of parents">{{ parent }}</option>
+  </select>
 <!-- Note: doesn't work right! don't know why! -->
 <!-- <button class="btn btn-outline-warning"(click)="onViewsSort()">
     ViewsSort <i [ngClass]="{'fas fa-sort-up': viewsStatus === true, 'fas fa-sort-down': viewsStatus === false}"></i>
 </button> -->
 
-<!-- TODO: Bug fix: click 2 times on any button and the arrow will reverse in the other buttons -->
 <button class="btn btn-outline-warning"(click)="onViewsSort()">
     ViewsSort <i *ngIf="viewsClicked === false"></i>
     <i class="fas fa-sort-down"  *ngIf="viewsStatus && viewsClicked"></i>
