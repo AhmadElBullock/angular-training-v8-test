@@ -9,7 +9,9 @@ export class VideosService implements OnInit {
   
   videos: Video[] = VIDEOS;
   allParent = [];
+  allTitles = []
   uniqueParent = [];
+  uniqueTitle = []
   videosByViewsToglle: boolean = true;
   videosByLikesToglle: boolean = true;
   videosBySharesToglle: boolean = true;
@@ -20,9 +22,12 @@ export class VideosService implements OnInit {
   unique() {
     for (let video of this.videos) {
       this.allParent.push(video.parent_name);
+      this.allTitles.push(video.title)
     }
     this.uniqueParent = [...new Set(this.allParent)];
-    console.log(this.uniqueParent)
+    this.uniqueTitle = [...new Set(this.allTitles)];
+    //console.log(this.uniqueParent);
+    //console.log(this.uniqueTitle);
   }
 
   viewsSort() {

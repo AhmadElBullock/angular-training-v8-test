@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Video } from '../video.interface';
-import { VIDEOS} from '../VIDOES'
 import { VideosService } from '../videos.service';
 
 @Component({
@@ -14,13 +13,21 @@ export class VideosComponent implements OnInit {
   likesStatus: boolean = false; likesClicked = false;
   sharesStatus: boolean = false; sharesClicked = false;
   parents = [];
+  titles = [];
+  videoFilter: string;
    
   constructor(private videosService: VideosService) { }
-  
+
   ngOnInit() {
     this.videos = this.videosService.videos;
     this.videosService.unique();
     this.parents = this.videosService.uniqueParent;
+    this.titles = this.videosService.uniqueTitle;
+  }
+
+  search(filters: any): void {
+    Object.keys(filters).forEach(key => filters[key] === '' ? delete filters[key] : key);
+    //this.groupFilters.emit(filters);
   }
 
   onViewsSort() {

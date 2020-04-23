@@ -1,6 +1,17 @@
-  <select [(ngModel)]="videoFilter">
-    <option *ngFor="let parent of parents">{{ parent }}</option>
-  </select>
+<div>
+    <p>Search by page name</p>
+    <select [(ngModel)]="videoFilter">
+        <option *ngFor="let parent of parents">{{ parent }}</option>
+    </select>
+</div>
+<div>
+    <p>Search by video title</p>
+    <select [(ngModel)]="videoFilter">
+        <option *ngFor="let title of titles">{{ title }}</option>
+    </select>
+</div>
+<input type="text" [(ngModel)]="videoFilter">
+
 <!-- Note: doesn't work right! don't know why! -->
 <!-- <button class="btn btn-outline-warning"(click)="onViewsSort()">
     ViewsSort <i [ngClass]="{'fas fa-sort-up': viewsStatus === true, 'fas fa-sort-down': viewsStatus === false}"></i>
@@ -24,7 +35,7 @@
 </button>
 <button (click)="test()">test</button>
 
-<div class="col-12 mb-3" *ngFor="let video of videos | filter: videoFilter: 'parent_name'">
+<div class="col-12 mb-3" *ngFor="let video of videos | filter: {parent_name:videoFilter, title:videoFilter}">
     <div class="media">
         <img src="http://via.placeholder.com/64x64" class="mr-3" alt="64x64">
         <div class="media-body">
