@@ -21,29 +21,28 @@ export class FilterPipe implements PipeTransform {
       singleItem[propName].toLowerCase().startsWith(videoFilter.toLowerCase())
       ); */
          //return value.filter(ff => ff.parent_name.toLowerCase().indexOf(videoFilter.toLowerCase() !== -1))
+
+      //TAKEN
          if (!videoFilter){
-          return videos;
-        }
-    
-        if (!Array.isArray(videos)){
-          return videos;
-        }
-    
-        if (videoFilter && Array.isArray(videos)) {
-          let filterKeys = Object.keys(videoFilter);
-    
-          if (propName) {
-            return videos.filter(item =>
-                filterKeys.reduce((x, keyName) =>
-                    (x && new RegExp(videoFilter[keyName], 'gi').test(item[keyName])) || videoFilter[keyName] == "", true));
-          }
-          else {
-            return videos.filter(item => {
-              return filterKeys.some((keyName) => {
-                return new RegExp(videoFilter[keyName], 'gi').test(item[keyName]) || videoFilter[keyName] == "";
-              });
-            });
-          }
-        }
+        return videos;
       }
+       if (!Array.isArray(videos)){
+        return videos;
+      }
+       if (videoFilter && Array.isArray(videos)) {
+        let filterKeys = Object.keys(videoFilter);
+           if (propName) {
+          return videos.filter(item =>
+              filterKeys.reduce((x, keyName) =>
+                  (x && new RegExp(videoFilter[keyName], 'gi').test(item[keyName])) || videoFilter[keyName] == "", true));
+        }
+       else {
+         return videos.filter(item => {
+           return filterKeys.some((keyName) => {
+             return new RegExp(videoFilter[keyName], 'gi').test(item[keyName]) || videoFilter[keyName] == "";
+           });
+         });
+       }
+      }
+    }
 }

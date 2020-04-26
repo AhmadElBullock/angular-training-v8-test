@@ -1,59 +1,79 @@
-<div>
-    <p>Search by page name</p>
-    <select [(ngModel)]="videoFilter">
-        <option *ngFor="let parent of parents">{{ parent }}</option>
-    </select>
+<div class="container-md">
+<div class="row mb-4">
+    <div class="col-md-5 mb-3 mb-md-0">
+        <p>Sort videos by:</p>
+        <button class="btn btn-outline-warning"(click)="onViewsSort()">
+            Views
+            <i class="fas fa-sort-down opacity-zero" *ngIf="viewsClicked === false"></i>
+            <i class="fas fa-sort-down"  *ngIf="viewsStatus && viewsClicked"></i>
+            <i class="fas fa-sort-up" *ngIf="!viewsStatus && viewsClicked"></i>
+        </button>
+        
+        <button class="btn btn-outline-primary" (click)="onLikesSort()">
+            Likes
+            <i class="fas fa-sort-down opacity-zero" *ngIf="likesClicked === false"></i>
+            <i class="fas fa-sort-down"  *ngIf="likesStatus && likesClicked"></i>
+            <i class="fas fa-sort-up" *ngIf="!likesStatus && likesClicked"></i>
+        </button>
+
+        <button class="btn btn-outline-success" (click)="onSharesSort()">
+            Shares
+            <i class="fas fa-sort-down opacity-zero" *ngIf="sharesClicked === false"></i>
+            <i class="fas fa-sort-down"  *ngIf="sharesStatus && sharesClicked"></i>
+            <i class="fas fa-sort-up" *ngIf="!sharesStatus && sharesClicked"></i>
+        </button>
+    </div>
+    <div class="col-md-7">
+        <div class="row">
+            <div class="col">
+                    <p>View by channel name:</p>
+                    <select class="form-control" [(ngModel)]="videoFilter">
+                        <option *ngFor="let parent of parents">{{ parent }}</option>
+                    </select>
+            </div>
+            <div class="col">
+                <p>View by video title:</p>
+                <select class="form-control" [(ngModel)]="videoFilter">
+                    <option *ngFor="let title of titles">{{ title | shorten}}</option>
+                </select>
+            </div>
+        </div>
+        <!-- <input type="text" [(ngModel)]="videoFilter"> -->
+    </div>
 </div>
-<div>
-    <p>Search by video title</p>
-    <select [(ngModel)]="videoFilter">
-        <option *ngFor="let title of titles">{{ title }}</option>
-    </select>
 </div>
-<input type="text" [(ngModel)]="videoFilter">
 
-<!-- Note: doesn't work right! don't know why! -->
-<!-- <button class="btn btn-outline-warning"(click)="onViewsSort()">
-    ViewsSort <i [ngClass]="{'fas fa-sort-up': viewsStatus === true, 'fas fa-sort-down': viewsStatus === false}"></i>
-</button> -->
 
-<button class="btn btn-outline-warning"(click)="onViewsSort()">
-    ViewsSort <i *ngIf="viewsClicked === false"></i>
-    <i class="fas fa-sort-down"  *ngIf="viewsStatus && viewsClicked"></i>
-    <i class="fas fa-sort-up" *ngIf="!viewsStatus && viewsClicked"></i>
-</button>
-
-<button class="btn btn-outline-primary" (click)="onLikesSort()">
-    LikesSort <i *ngIf="likesClicked === false"></i>
-    <i class="fas fa-sort-down"  *ngIf="likesStatus && likesClicked"></i>
-    <i class="fas fa-sort-up" *ngIf="!likesStatus && likesClicked"></i>
-</button>
-<button class="btn btn-outline-success" (click)="onSharesSort()">
-    SharesSort <i *ngIf="sharesClicked === false"></i>
-    <i class="fas fa-sort-down"  *ngIf="sharesStatus && sharesClicked"></i>
-    <i class="fas fa-sort-up" *ngIf="!sharesStatus && sharesClicked"></i>
-</button>
-<button (click)="test()">test</button>
-
-<div class="col-12 mb-3" *ngFor="let video of videos | filter: {parent_name:videoFilter, title:videoFilter}">
-    <div class="media">
+<div
+      class="search-results"
+      infiniteScroll
+      [infiniteScrollDistance]="10"
+      [infiniteScrollThrottle]="50"
+      (scrolled)="onScroll()"
+    >
+<!-- Use this one to make SORTING work -->
+<div class="col-12 mb-5" *ngFor="let video of videos | filter: videoFilter:'parent_name'">
+<!-- Use this one to make FILTER work -->
+<!-- <div class="col-12 mb-3" *ngFor="let video of videos | filter: {parent_name:videoFilter, title:videoFilter}"> -->
+    <div class="media mb-5 mb-md-0">
         <img src="http://via.placeholder.com/64x64" class="mr-3" alt="64x64">
         <div class="media-body">
             <div class="row">
-                <div class="col-9">
+                <div class="col-12 col-sm-9">
                     <a href="">
                         <h6 class="mt-0">{{ video.title }}</h6>
                     </a>
                 </div>
-                <div class="col-3 p-0">
+                <div class="col-12 col-sm-3 pl-3 pl-sm-0 p-sm-0">
                     <p class="small pull-right">puplished {{ video.published | date:'mediumDate' }}</p>
                 </div> 
             </div>
-            <p>{{ video.parent_name }}</p>
+            <p class="mb-1 mb-sm-0">{{ video.parent_name }}</p>
             <span class="badge badge-pill badge-warning">{{ video.views }} views</span>
             <span class="badge badge-pill badge-primary">{{ video.likes }} likes</span>
             <span class="badge badge-pill badge-info">{{ video.comments }} comments</span>
             <span class="badge badge-pill badge-success">{{ video.shares }} shares</span>
         </div>
-      </div>
+    </div>
+</div>
 </div>

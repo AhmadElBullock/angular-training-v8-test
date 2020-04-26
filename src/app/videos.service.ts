@@ -55,6 +55,7 @@ export class VideosService implements OnInit {
     }
     this.videosByViewsToglle = !this.videosByViewsToglle;
     this.videosByLikesToglle = true; this.videosBySharesToglle = true;
+    console.log(this.videos)
   }
 
   likesSort() {

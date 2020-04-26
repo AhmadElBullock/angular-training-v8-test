@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Video } from '../video.interface';
 import { VideosService } from '../videos.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-videos',
@@ -14,9 +15,9 @@ export class VideosComponent implements OnInit {
   sharesStatus: boolean = false; sharesClicked = false;
   parents = [];
   titles = [];
-  videoFilter: string;
    
-  constructor(private videosService: VideosService) { }
+  constructor(private videosService: VideosService,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.videos = this.videosService.videos;
@@ -25,9 +26,8 @@ export class VideosComponent implements OnInit {
     this.titles = this.videosService.uniqueTitle;
   }
 
-  search(filters: any): void {
-    Object.keys(filters).forEach(key => filters[key] === '' ? delete filters[key] : key);
-    //this.groupFilters.emit(filters);
+  onScroll() {
+    console.log('scrolled!!');
   }
 
   onViewsSort() {
@@ -52,10 +52,6 @@ export class VideosComponent implements OnInit {
     this.sharesStatus = !this.sharesStatus;
     this.viewsStatus = false; this.viewsClicked = false;
     this.likesStatus = false; this.likesClicked = false;
-  }
-
-  test() {
-    this.videosService.unique()
   }
 
 }
